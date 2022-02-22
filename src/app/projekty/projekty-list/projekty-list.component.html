@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="NovyProjekt()">Novy Projekt</button>
+  </div>
+</div>
+<hr>
+<div *ngIf="loading" style="text-align: center">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div class="row" *ngIf="!loading">
+  <div class="col-xs-12"
+       *ngFor="let klient of klienti, let i = index"
+  >
+    <app-projekty-item
+      *ngFor="let projekt of klient.projekty, let in = index"
+      [projekt]="projekt"
+      [index]="in"
+      [index2]="i"
+    ></app-projekty-item>
+  </div>
+</div>

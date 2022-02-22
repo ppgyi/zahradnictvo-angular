@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+<!--    <div class="navbar-header">-->
+<!--      <a routerLink="/klienti" class="navbar-brand">Klienti</a>-->
+<!--    </div>-->
+<!--    <div class="collapse navbar-collapse">-->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
+        <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
+      </button>
+      <a routerLink="/klienti" class="navbar-brand">Klienti</a>
+    </div>
+    <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a [routerLink]="['/projekty']">Projekty</a></li>
+        <li routerLinkActive="active"><a routerLink="/nakupnyzoznam">Nakupny zoznam</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropdown>
+          <a style="cursor: pointer" class="dropdown-toggle" role="button">Nacitat/Ulozit Data<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer" (click)="nacitatData()">Nacitat Data</a></li>
+            <li><a style="cursor: pointer" (click)="ulozitData()">Ulozit Data</a></li>
+          </ul>
+        </li>
+        <li>
+          <a style="cursor: pointer" (click)="onLogout()">ODHLASIT</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

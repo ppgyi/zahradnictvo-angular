@@ -1,0 +1,30 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <app-nakupny-zoznam-edit></app-nakupny-zoznam-edit>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-primary"
+                  type="submit"
+                  (click)="nacitatZoznam()"
+                  >{{ 'Nacitat Nakupny Zoznam' }}</button>
+          <button class="btn btn-success"
+                  type="submit"
+                  (click)="ulozitZoznam()"
+                  >{{ 'Ulozit Nakupny Zoznam' }}</button>
+        </div>
+      </div>
+      <ul class="list-group">
+        <a
+          class="list-group-item"
+          style="cursor: pointer"
+          *ngFor="let polozka of polozky; let i = index"
+          (click)="upravitPolozku(i)"
+        >{{ polozka.nazov }} ({{ polozka.pocet }})</a>
+      </ul>
+    </div>
+  </div>
+</div>
+

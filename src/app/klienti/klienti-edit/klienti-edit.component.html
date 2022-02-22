@@ -1,0 +1,111 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="klientFormular" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!klientFormular.valid"
+          >Ulozit</button>
+          <button class="btn btn-danger" type="button" (click)="zrusit()">Zrusit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="meno">Meno</label>
+            <input type="text" id="meno" class="form-control" formControlName="meno">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="priezvisko">Priezvisko</label>
+            <input type="text" id="priezvisko" class="form-control" formControlName="priezvisko">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="adresa">Adresa</label>
+            <input type="text" id="adresa" class="form-control" formControlName="adresa">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="telefon">Telefon</label>
+            <input type="text" id="telefon" class="form-control" formControlName="telefon">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="eMail">eMail</label>
+            <input type="text" id="eMail" class="form-control" formControlName="eMail">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-primary"
+            type="button"
+            (click)="projekt()"
+          >PROJEKTY</button>
+        </div>
+      </div>
+      <div class="row" *ngIf="zobraz" formArrayName="projekty">
+        <div class="col-xs-12"
+             *ngFor="let projektCtrl of controls; let i= index"
+             [formGroupName]="i">
+              <div class="row">
+                <div class="col-xs-12">
+                  <label [for]="'nazov' + i">Nazov projektu</label>
+                  <input type="text" [id]="'nazov' + i" class="form-control" formControlName="nazov">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <label [for]="'popis' + i">Popis</label>
+                  <textarea type="text" [id]="'popis' + i" class="form-control" formControlName="popis" rows="6"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <label [for]="'datum' + i">Datum</label>
+                  <input type="date" [id]="'datum' + i" class="form-control" formControlName="datum">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <label [for]="'adresaprojektu' + i">Adresa</label>
+                  <input type="text" [id]="'adresaprojektu' + i" class="form-control" formControlName="adresaprojektu">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <input type="checkbox" [id]="'ukoncene' + i" name="ukoncene" formControlName="ukoncene">
+                  <label [for]="'ukoncene' + i">Ukoncene</label>
+                </div>
+              </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="zobraz">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-success"
+            type="button"
+            (click)="zadatProjekt()"
+          >Zadat Projekt</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

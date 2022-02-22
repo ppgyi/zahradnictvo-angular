@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table table-striped">
+      <tbody>
+      <tr>
+        <th scope="row">Klient: </th>
+        <td class="col-xs-9"
+            [routerLink]="['/klienti',id2]"
+            style="cursor: pointer; color:dodgerblue"
+        >{{klient.meno}}  {{klient.priezvisko}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Nazov projektu: </th>
+        <td class="col-xs-9">{{projekt.nazov}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Popis: </th>
+        <td>{{projekt.popis}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Adresa realizacie: </th>
+        <td>{{projekt.adresaprojektu}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Datum realizacie: </th>
+        <td>{{projekt.datum | date:'longDate' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-primary"
+            type="button"
+            (click)="UpravitProjekt()">Upravit PROJEKT</button>
+  </div>
+</div>

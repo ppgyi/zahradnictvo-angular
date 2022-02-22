@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table table-striped">
+      <tbody>
+      <tr>
+        <th scope="row">Meno: </th>
+        <td class="col-xs-9">{{klient.meno}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Priezvisko: </th>
+        <td>{{klient.priezvisko}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Adresa: </th>
+        <td>{{klient.adresa}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Telefon: </th>
+        <td>{{klient.telefon}}</td>
+      </tr>
+      <tr>
+        <th scope="row">E-mail: </th>
+        <td>{{klient.eMail}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="novyProjektForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!novyProjektForm.valid"
+          >Ulozit</button>
+          <button class="btn btn-danger" type="button" (click)="zrusit()">Zrusit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="nazov">Nazov projektu</label>
+            <input type="text" id="nazov" class="form-control" formControlName="nazov">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="popis">Popis</label>
+            <textarea type="text" id="popis" class="form-control" formControlName="popis" rows="6"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="datum">Datum</label>
+            <input type="date" id="datum" class="form-control" formControlName="datum">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="adresaprojektu">Adresa</label>
+            <input type="text" id="adresaprojektu" class="form-control" formControlName="adresaprojektu">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div>
+            <input type="checkbox" id="ukoncene" name="ukoncene" formControlName="ukoncene">
+            <label for="ukoncene">Ukoncene</label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

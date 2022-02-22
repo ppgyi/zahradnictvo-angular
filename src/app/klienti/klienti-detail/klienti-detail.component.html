@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table table-striped">
+      <tbody>
+      <tr>
+        <th scope="row">Meno: </th>
+        <td class="col-xs-9">{{klient.meno}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Priezvisko: </th>
+        <td>{{klient.priezvisko}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Adresa: </th>
+        <td>{{klient.adresa}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Telefon: </th>
+        <td>{{klient.telefon}}</td>
+      </tr>
+      <tr>
+        <th scope="row">E-mail: </th>
+        <td>{{klient.eMail}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div
+      class="btn-group pull-right"
+      appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle">
+        Moznosti <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a style="cursor: pointer" (click)="UpravitKlienta()">Upravit Klienta</a></li>
+        <li><a style="cursor: pointer" (click)="VymazatKlienta()">Vymazat Klienta</a></li>
+        <li><a style="cursor: pointer" (click)="DoZoznamu()">Do nakupneho zoznamu</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-primary"
+            type="button"
+            (click)="zadatProjekt()">Zadat PROJEKT</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <h5>Aktivne projekty:</h5>
+    <div *ngFor="let kl of klient.projekty"
+         class="list-group-item clearfix">
+      <div class="pull-left">
+        <h5 class="list-group-item-heading">{{ kl.nazov }} | {{ kl.popis }} | {{ kl.adresaprojektu }}</h5>
+      </div>
+      <span class="pull-right">{{ kl.datum | date:'longDate' }}</span>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <h5>Ukoncene projekty:</h5>
+    <div *ngFor="let kl of klient.projektyukoncene"
+         class="list-group-item clearfix">
+      <div class="pull-left">
+        <h5 class="list-group-item-heading">{{ kl.nazov }} | {{ kl.popis }} | {{ kl.adresaprojektu }}</h5>
+      </div>
+      <span class="pull-right">{{ kl.datum | date:'longDate' }}, UKONCENE</span>
+    </div>
+  </div>
+</div>

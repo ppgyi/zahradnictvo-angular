@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="NovyKlient()">Novy Klient</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="input-group">
+      <label for="vyhladat" class="input-group-addon">Vyhladat: </label>
+      <input type="text"
+             id="vyhladat"
+             placeholder="Priezvisko"
+             class="form-control"
+             [(ngModel)]="filteredStatus"
+      >
+    </div>
+  </div>
+</div>
+<div *ngIf="loading" style="text-align: center">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div class="row" *ngIf="!loading">
+  <div class="col-xs-12">
+    <app-klienti-item
+      *ngFor="let klient of klienti | filter:filteredStatus:'priezvisko', let i = index"
+      [klient]="klient"
+      [index]="i"
+    ></app-klienti-item>
+  </div>
+</div>
+
+

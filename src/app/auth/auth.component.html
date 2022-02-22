@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <div id="formContent" [@move]>
+    <div class="row">
+      <div class="col-xs-12">
+        <div>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOUSk6EkzneCI-cnicVVDHO66rPmS9xWsEcQ&usqp=CAU" id="icon"/>
+        </div>
+        <br>
+        <div *ngIf="isLoading" style="text-align: center">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+        <div class="alert alert-danger" *ngIf="error">
+          <p>{{error}}</p>
+        </div>
+        <form (ngSubmit)="onSubmit()"
+              #f="ngForm"
+              *ngIf="!isLoading"
+              class="form-group">
+          <div class="input-group">
+            <input type="text" id="login" class="form-control" name="login"
+                   placeholder="Email" ngModel required email>
+            <span class="input-group-btn">
+              <button class="btn btn-danger btn-md"
+                      type="button" (click)="clearEmail()">
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </span>
+          </div>
+          <br>
+          <div class="input-group">
+            <input [type]=typeVisible id="password" class="form-control" name="password"
+                   placeholder="Heslo" ngModel required minlength="6">
+            <span class="input-group-btn">
+              <button class="btn btn-success btn-md"
+                      type="button"
+                      (touchstart)="eyeOpen()"
+                      (touchend)="eyeClose()"
+                      (mousedown)="eyeOpen()"
+                      (mouseup)="eyeClose()">
+                <span [class]=classVisible></span>
+              </button>
+            </span>
+          </div>
+          <br>
+          <input [disabled]="!f.valid" type="submit" class="btn btn-primary btn-lg" value="Let me in.">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
