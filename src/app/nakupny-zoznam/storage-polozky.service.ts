@@ -13,12 +13,20 @@ export class StoragePolozkyService {
 
   vytvorenieAUlozenieDat() {
     const polozky = this.polozkaService.getPolozka();
-    this.http.put('https://ng-projekt-zahradnictvo-default-rtdb.firebaseio.com/polozky.json', polozky)
+    // this.http.put('https://ng-projekt-zahradnictvo-default-rtdb.firebaseio.com/polozky.json', polozky)
+    //   .subscribe(responseData => {console.log (responseData)})
+    this.http.post('http://localhost:8080/polozky', polozky)
       .subscribe(responseData => {console.log (responseData)})
   }
 
   nacitanieDat() {
-    return this.http.get<Polozka[]>('https://ng-projekt-zahradnictvo-default-rtdb.firebaseio.com/polozky.json')
+    // return this.http.get<Polozka[]>('https://ng-projekt-zahradnictvo-default-rtdb.firebaseio.com/polozky.json')
+    //   .pipe(
+    //     tap(polozky => {
+    //       this.polozkaService.nahrajPolozky(polozky)
+    //     })
+    //   )
+    return this.http.get<Polozka[]>('http://localhost:8080/polozky')
       .pipe(
         tap(polozky => {
           this.polozkaService.nahrajPolozky(polozky)

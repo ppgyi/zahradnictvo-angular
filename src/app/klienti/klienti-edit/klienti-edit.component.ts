@@ -37,7 +37,7 @@ export class KlientiEditComponent implements OnInit {
     let priezvisko = '';
     let adresa = '';
     let telefon = '';
-    let eMail = '';
+    let email = '';
     let projekty = new FormArray([]);
     let projektyukoncene = new FormArray([]);
 
@@ -47,7 +47,7 @@ export class KlientiEditComponent implements OnInit {
       priezvisko = klient.priezvisko;
       adresa = klient.adresa;
       telefon = klient.telefon;
-      eMail = klient.eMail;
+      email = klient.email;
       if (klient['projekty']) {
         for (let projekt of klient.projekty) {
           projekty.push(
@@ -81,7 +81,7 @@ export class KlientiEditComponent implements OnInit {
       'priezvisko' : new FormControl(priezvisko, Validators.required),
       'adresa' : new FormControl(adresa, Validators.required),
       'telefon' : new FormControl(telefon, Validators.required),
-      'eMail' : new FormControl(eMail, [Validators.required, Validators.email]),
+      'email' : new FormControl(email, [Validators.required, Validators.email]),
       'projekty': projekty,
       'projektyukoncene': projektyukoncene
     })
@@ -93,7 +93,7 @@ export class KlientiEditComponent implements OnInit {
     //   this.klientFormular.value['priezvisko'],
     //   this.klientFormular.value['adresa'],
     //   this.klientFormular.value['telefon'],
-    //   this.klientFormular.value['eMail'],
+    //   this.klientFormular.value['email'],
     //   this.klientFormular.value['projekty'],
     // );
     if (this.editMode) {

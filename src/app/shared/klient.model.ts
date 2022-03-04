@@ -5,7 +5,7 @@ export class Klient {
   public priezvisko: string;
   public adresa: string;
   public telefon: string;
-  public eMail: string;
+  public email: string;
   public projekty: Projekt[];
   public projektyukoncene: Projekt[];
 
@@ -14,7 +14,7 @@ export class Klient {
     this.priezvisko= p;
     this.adresa= a;
     this.telefon= t;
-    this.eMail= e;
+    this.email= e;
     this.projekty= pr;
     this.projektyukoncene = pru;
   }

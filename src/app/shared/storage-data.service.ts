@@ -17,20 +17,35 @@ export class StorageDataService {
 
   vytvorenieAUlozenieDat() {
     const klienti = this.klientService.getKlient();
-    this.http.put('https://ng-projekt-zahradnictvo-default-rtdb.firebaseio.com/klienti.json', klienti)
+    // this.http.put('https://ng-projekt-zahradnictvo-default-rtdb.firebaseio.com/klienti.json', klienti)
+    //   .subscribe(responseData => {console.log (responseData)})
+    this.http.post('http://localhost:8080/klienti', klienti)
       .subscribe(responseData => {console.log (responseData)})
   }
 
   nacitanieDat() {
     this.loading.next(true);
-    return this.http.get<Klient[]>('https://ng-projekt-zahradnictvo-default-rtdb.firebaseio.com/klienti.json')
+    // return this.http.get<Klient[]>('https://ng-projekt-zahradnictvo-default-rtdb.firebaseio.com/klienti.json')
+    //   .pipe(
+    //     map(klienti => {
+    //     return klienti.map(klient => {
+    //       return {...klient, projekty: klient.projekty ? klient.projekty : [],
+    //         projektyukoncene: klient.projektyukoncene ? klient.projektyukoncene : []}
+    //     });
+    //   }),
+    //     tap(klienti => {
+    //       this.klientService.nahrajKlientov(klienti);
+    //       this.loading.next(false);
+    //     })
+    //   )
+    return this.http.get<Klient[]>('http://localhost:8080/klienti')
       .pipe(
         map(klienti => {
-        return klienti.map(klient => {
-          return {...klient, projekty: klient.projekty ? klient.projekty : [],
-            projektyukoncene: klient.projektyukoncene ? klient.projektyukoncene : []}
-        });
-      }),
+          return klienti.map(klient => {
+            return {...klient, projekty: klient.projekty ? klient.projekty : [],
+              projektyukoncene: klient.projektyukoncene ? klient.projektyukoncene : []}
+          });
+        }),
         tap(klienti => {
           this.klientService.nahrajKlientov(klienti);
           this.loading.next(false);
